@@ -111,3 +111,16 @@ print(
 )
 
 draw_contour_cd(path_x, path_y, test_f, bounds)
+
+print("\nРешение для математической модели: ")
+bounds = ((800, 950), (2, 5))
+T0, V0 = 830.0, 2.5
+x1, x2, iters, path_x, path_y = coordinate_descent(T0, V0, hcho_objective, bounds)
+
+print(
+    f"X* = ({x1:.4f}, {x2:.4f}); "
+    f"f(X*) = {pozitive_hcho_objective(x1, x2):.4f}, "
+    f"число итераций = {iters}"
+)
+
+draw_contour_cd(path_x, path_y, pozitive_hcho_objective, bounds)
