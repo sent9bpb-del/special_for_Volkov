@@ -105,3 +105,32 @@ while True:
 
     print(f"Концентрация формальдегида(HCHO) на выходе: {C2_array[-1]} моль/м^3, {C2_per_array[-1]} %")
     print(f"Время: {t_array[-1]} c")
+
+    plt.figure(figsize=(15, 5))
+
+    plt.subplot(1, 3, 1)
+    plt.plot(t_array, C1_per_array)
+    plt.grid(True)
+    plt.xlabel('$t, c$')
+    plt.ylabel('C1 (CH3OH), %')
+    plt.axhline(0, color='black', linewidth=1)
+    plt.axvline(0, color='black', linewidth=1)
+
+    plt.subplot(1, 3, 2)
+    plt.plot(t_array, C3_per_array)
+    plt.grid(True)
+    plt.xlabel('$t, c$')
+    plt.ylabel('C3 (O2), %')
+    plt.axhline(0, color='black', linewidth=1)
+    plt.axvline(0, color='black', linewidth=1)
+
+    plt.subplot(1, 3, 3)
+    plt.plot(t_array, C2_per_array)
+    plt.grid(True)
+    plt.xlabel('$t, c$')
+    plt.ylabel('C2 (HCHO), %')
+    plt.axhline(0, color='black', linewidth=1)
+    plt.axvline(0, color='black', linewidth=1)
+
+    plt.tight_layout()
+    plt.show()
