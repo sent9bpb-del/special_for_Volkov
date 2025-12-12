@@ -24,3 +24,7 @@ t0 = 0
 d_t = 0.01
 eps = 0.01
 m = m_c1_vh + m_vozd_vh
+
+def k(A, E, T):
+    k = A * np.exp(-E/(R*T))
+    return k
