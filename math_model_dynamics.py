@@ -89,6 +89,22 @@ def solve_model(V, T, d_t=0.01, eps=0.01, max_steps=200000):
                 abs(C4_per_array[-1] - C4_per_array[-2]) < eps):
             break
 
+    result = {
+        "t": np.array(t_array),
+        "C1": np.array(C1_array),
+        "C2": np.array(C2_array),
+        "C3": np.array(C3_array),
+        "C4": np.array(C4_array),
+        "C1_percent": np.array(C1_per_array),
+        "C2_percent": np.array(C2_per_array),
+        "C3_percent": np.array(C3_per_array),
+        "C4_percent": np.array(C4_per_array),
+        "C2_out_mol": C2_array[-1],
+        "C2_out_percent": C2_per_array[-1],
+        "t_final": t_array[-1]
+    }
+    return result
+
 
 def hcho_objective(T, V):
     res = solve_model(V, T)
