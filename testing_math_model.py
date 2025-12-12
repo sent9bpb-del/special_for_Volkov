@@ -37,3 +37,22 @@ def t_s(V):
     v = m / ro
     t_s = V/v
     return t_s
+
+def f_C1(C1_vh, C1, C3, C4):
+    C1 = (1/t_s(V)) * (C1_vh - C1) - 2*k(A1, E1, T)*C1*C3 - k(A2, E2, T)*C1 - 2*k(A3, E3, T)*C1*C3 - k(A4, E4, T)*C1*C4
+    return C1
+
+
+def f_C2(C2_vh, C2, C1, C3):
+    C2 = (1 / t_s(V)) * (C2_vh - C2) + 2 * k(A1, E1, T)*C1*C3 + k(A2, E2, T)*C1
+    return C2
+
+
+def f_C3(C3_vh, C3, C1):
+    C3 = (1 / t_s(V)) * (C3_vh - C3) - k(A1, E1, T)*C1*C3 - 3 * k(A3, E3, T)*C1*C3
+    return C3
+
+
+def f_C4(C4_vh, C4, C1):
+    C4 = (1 / t_s(V)) * (C4_vh - C4) - k(A4, E4, T)*C1*C4 + k(A2, E2, T)*C1
+    return C4
