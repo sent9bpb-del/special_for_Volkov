@@ -48,3 +48,14 @@ def solve_model(V, T, d_t=0.01, eps=0.01, max_steps=200000):
     k2 = k(A2, E2, T)
     k3 = k(A3, E3, T)
     k4 = k(A4, E4, T)
+
+    C1_array = [C1]
+    C2_array = [C2]
+    C3_array = [C3]
+    C4_array = [C4]
+
+    C1_per_array = [per_C(C1, mu_ch3oh)]
+    C2_per_array = [per_C(C2, mu_hcho)]
+    C3_per_array = [per_C(C3, mu_o2)]
+    C4_per_array = [per_C(C4, mu_h2)]
+    t_array = [t]
