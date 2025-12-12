@@ -97,3 +97,18 @@ def hcho_objective(T, V):
 def pozitive_hcho_objective(T, V):
     res = solve_model(V, T)
     return res["C2_out_percent"]
+
+if __name__ == "__main__":
+    V_test = 3.0
+    T_test = 900.0
+
+    res = solve_model(V_test, T_test)
+
+    print(f"V = {V_test} м³, T = {T_test} K")
+    print(f"Концентрация метанола(CH3OH) на входе: "
+          f"{res['C1'][0]:.4f} моль/м³, {res['C1_percent'][0]:.4f} %")
+    print(f"Концентрация кислорода(O2) на входе: "
+          f"{res['C3'][0]:.4f} моль/м³, {res['C3_percent'][0]:.4f} %")
+    print(f"Концентрация формальдегида(HCHO) на выходе: "
+          f"{res['C2_out_mol']:.4f} моль/м³, {res['C2_out_percent']:.4f} %")
+    print(f"Время до стационара: {res['t_final']:.2f} c")
