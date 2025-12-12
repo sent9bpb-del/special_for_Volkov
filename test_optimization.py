@@ -98,3 +98,16 @@ def coordinate_descent(x1, x2, f0, bounds,
             break
 
     return x1, x2, iters, path_x, path_y
+
+bounds = ((-10, 10), (-10, 10))
+
+print("Решение для тестовой функции f(x1, x2) = x1^2 + x2^2:")
+x1, x2, iters, path_x, path_y = coordinate_descent(-1.3, -7, test_f, bounds)
+
+print(
+    f"X* = ({x1:.4f}, {x2:.4f}); "
+    f"f(X*) = {test_f(x1, x2):.4f}, "
+    f"число итераций = {iters}"
+)
+
+draw_contour_cd(path_x, path_y, test_f, bounds)
