@@ -28,3 +28,7 @@ m = m_c1_vh + m_vozd_vh
 def k(A, E, T):
     k = A * np.exp(-E/(R*T))
     return k
+
+def per_C(C_m, mu):
+    C = (C_m * 100 * mu) / ro
+    return C
