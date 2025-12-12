@@ -56,3 +56,8 @@ def f_C3(C3_vh, C3, C1):
 def f_C4(C4_vh, C4, C1):
     C4 = (1 / t_s(V)) * (C4_vh - C4) - k(A4, E4, T)*C1*C4 + k(A2, E2, T)*C1
     return C4
+
+C1_vh = (m_c1_vh * ro) / (m * mu_ch3oh)
+C3_vh = (m_vozd_vh * 0.22 * ro) / (m * mu_o2)
+C2_vh = 0
+C4_vh = 0
