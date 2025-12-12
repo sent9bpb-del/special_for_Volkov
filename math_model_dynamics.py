@@ -40,3 +40,11 @@ def solve_model(V, T, d_t=0.01, eps=0.01, max_steps=200000):
     C3 = C3_vh
     C4 = C4_vh
     t = 0.0
+
+    v = m / ro
+    tau = V / v
+
+    k1 = k(A1, E1, T)
+    k2 = k(A2, E2, T)
+    k3 = k(A3, E3, T)
+    k4 = k(A4, E4, T)
