@@ -88,3 +88,12 @@ def solve_model(V, T, d_t=0.01, eps=0.01, max_steps=200000):
                 abs(C3_per_array[-1] - C3_per_array[-2]) < eps and
                 abs(C4_per_array[-1] - C4_per_array[-2]) < eps):
             break
+
+
+def hcho_objective(T, V):
+    res = solve_model(V, T)
+    return -res["C2_out_percent"]
+
+def pozitive_hcho_objective(T, V):
+    res = solve_model(V, T)
+    return res["C2_out_percent"]
