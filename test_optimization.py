@@ -39,3 +39,62 @@ def draw_contour_cd(path_x, path_y, f0, bounds, grid_n=30):
     plt.grid(True)
     plt.legend()
     plt.show()
+
+def coordinate_descent(x1, x2, f0, bounds,
+                       eps=1e-4, max_iter=50,
+                       passes=4, steps=25):
+
+    x1_min, x1_max = bounds[0]
+    x2_min, x2_max = bounds[1]
+
+    path_x = [x1]
+    path_y = [x2]
+
+    def search_coord(coord_idx, left, right, x1, x2):
+        base_left, base_right = left, right
+        best_coord = None
+        best_val = None
+
+        for _ in range(passes):
+            grid = np.linspace(left, right, steps)
+
+            for val in grid:
+                if coord_idx == 0:
+                    val_f = f0(val, x2)
+                else:
+                    val_f = f0(x1, val)
+
+                if best_val is None or val_f < best_val:
+                    best_val = val_f
+                    best_coord = val
+
+            delta = (right - left) / (steps - 1)
+            left = max(base_left, best_coord - delta)
+            right = min(base_right, best_coord + delta)
+
+        if coord_idx == 0:
+            x1_new, x2_new = best_coord, x2
+        else:
+            x1_new, x2_new = x1, best_coord
+
+        return x1_new, x2_new, best_val
+
+    iters = 0
+
+    for _ in range(max_iter):
+        x1_old, x2_old = x1, x2
+
+        x1, x2, _ = search_coord(0, x1_min, x1_max, x1, x2)
+        path_x.append(x1)
+        path_y.append(x2)
+
+        x1, x2, _ = search_coord(1, x2_min, x2_max, x1, x2)
+        path_x.append(x1)
+        path_y.append(x2)
+
+        iters += 1
+
+        if np.hypot(x1 - x1_old, x2 - x2_old) < eps:
+            break
+
+    return x1, x2, iters, path_x, path_y
