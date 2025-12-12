@@ -112,3 +112,27 @@ if __name__ == "__main__":
     print(f"Концентрация формальдегида(HCHO) на выходе: "
           f"{res['C2_out_mol']:.4f} моль/м³, {res['C2_out_percent']:.4f} %")
     print(f"Время до стационара: {res['t_final']:.2f} c")
+
+    t = res["t"]
+    plt.figure(figsize=(15, 5))
+
+    plt.subplot(1, 3, 1)
+    plt.plot(t, res["C1_percent"])
+    plt.grid(True)
+    plt.xlabel('$t, c$')
+    plt.ylabel('C1 (CH3OH), %')
+
+    plt.subplot(1, 3, 2)
+    plt.plot(t, res["C3_percent"])
+    plt.grid(True)
+    plt.xlabel('$t, c$')
+    plt.ylabel('C3 (O2), %')
+
+    plt.subplot(1, 3, 3)
+    plt.plot(t, res["C2_percent"])
+    plt.grid(True)
+    plt.xlabel('$t, c$')
+    plt.ylabel('C2 (HCHO), %')
+
+    plt.tight_layout()
+    plt.show()
