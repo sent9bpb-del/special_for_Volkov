@@ -96,3 +96,12 @@ while True:
     C3_per_array.append(per_C(C3, mu_o2))
     C4_per_array.append(per_C(C4, mu_h2))
     t_array.append(t0)
+
+    if (abs(C1_per_array[-1] - C1_per_array[-2]) < eps) and \
+            (abs(C2_per_array[-1] - C2_per_array[-2]) < eps) and \
+            (abs(C3_per_array[-1] - C3_per_array[-2]) < eps) and \
+            (abs(C4_per_array[-1] - C4_per_array[-2]) < eps):
+        break
+
+    print(f"Концентрация формальдегида(HCHO) на выходе: {C2_array[-1]} моль/м^3, {C2_per_array[-1]} %")
+    print(f"Время: {t_array[-1]} c")
