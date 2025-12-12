@@ -32,3 +32,8 @@ def k(A, E, T):
 def per_C(C_m, mu):
     C = (C_m * 100 * mu) / ro
     return C
+
+def t_s(V):
+    v = m / ro
+    t_s = V/v
+    return t_s
