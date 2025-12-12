@@ -59,3 +59,26 @@ def solve_model(V, T, d_t=0.01, eps=0.01, max_steps=200000):
     C3_per_array = [per_C(C3, mu_o2)]
     C4_per_array = [per_C(C4, mu_h2)]
     t_array = [t]
+
+    for step in range(max_steps):
+        dC1dt = (1 / tau) * (C1_vh - C1) - 2 * k1 * C1 * C3 - k2 * C1 - 2 * k3 * C1 * C3 - k4 * C1 * C4
+        dC2dt = (1 / tau) * (C2_vh - C2) + 2 * k1 * C1 * C3 + k2 * C1
+        dC3dt = (1 / tau) * (C3_vh - C3) - k1 * C1 * C3 - 3 * k3 * C1 * C3
+        dC4dt = (1 / tau) * (C4_vh - C4) - k4 * C1 * C4 + k2 * C1
+
+        C1 += dC1dt * d_t
+        C2 += dC2dt * d_t
+        C3 += dC3dt * d_t
+        C4 += dC4dt * d_t
+        t += d_t
+
+        C1_array.append(C1)
+        C2_array.append(C2)
+        C3_array.append(C3)
+        C4_array.append(C4)
+
+        C1_per_array.append(per_C(C1, mu_ch3oh))
+        C2_per_array.append(per_C(C2, mu_hcho))
+        C3_per_array.append(per_C(C3, mu_o2))
+        C4_per_array.append(per_C(C4, mu_h2))
+        t_array.append(t)
