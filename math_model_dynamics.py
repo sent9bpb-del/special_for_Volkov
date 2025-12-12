@@ -82,3 +82,9 @@ def solve_model(V, T, d_t=0.01, eps=0.01, max_steps=200000):
         C3_per_array.append(per_C(C3, mu_o2))
         C4_per_array.append(per_C(C4, mu_h2))
         t_array.append(t)
+
+        if (abs(C1_per_array[-1] - C1_per_array[-2]) < eps and
+                abs(C2_per_array[-1] - C2_per_array[-2]) < eps and
+                abs(C3_per_array[-1] - C3_per_array[-2]) < eps and
+                abs(C4_per_array[-1] - C4_per_array[-2]) < eps):
+            break
