@@ -61,3 +61,38 @@ C1_vh = (m_c1_vh * ro) / (m * mu_ch3oh)
 C3_vh = (m_vozd_vh * 0.22 * ro) / (m * mu_o2)
 C2_vh = 0
 C4_vh = 0
+
+C1 = C1_vh
+C2 = C2_vh
+C3 = C3_vh
+C4 = C4_vh
+
+C1_array = [C1]
+C2_array = [C2]
+C3_array = [C3]
+C4_array = [C4]
+C1_per_array = [per_C(C1, mu_ch3oh)]
+C2_per_array = [per_C(C2, mu_hcho)]
+C3_per_array = [per_C(C3, mu_o2)]
+C4_per_array = [per_C(C4, mu_h2)]
+t_array = [t0]
+
+print(f"Концентрация метанола(CH3OH) на входе: {C1_array[0]} моль/м^3, {C1_per_array[0]} %")
+print(f"Концентрация кислорода(O2) на входе: {C3_array[0]} моль/м^3, {C3_per_array[0]} %")
+
+while True:
+    C1 += f_C1(C1_vh, C1_array[-1], C3_array[-1], C4_array[-1]) * d_t
+    C2 += f_C2(C2_vh, C2_array[-1], C1_array[-1], C3_array[-1]) * d_t
+    C3 += f_C3(C3_vh, C3_array[-1], C1_array[-1]) * d_t
+    C4 += f_C4(C4_vh, C4_array[-1], C1_array[-1]) * d_t
+    t0 += d_t
+
+    C1_array.append(C1)
+    C2_array.append(C2)
+    C3_array.append(C3)
+    C4_array.append(C4)
+    C1_per_array.append(per_C(C1, mu_ch3oh))
+    C2_per_array.append(per_C(C2, mu_hcho))
+    C3_per_array.append(per_C(C3, mu_o2))
+    C4_per_array.append(per_C(C4, mu_h2))
+    t_array.append(t0)
