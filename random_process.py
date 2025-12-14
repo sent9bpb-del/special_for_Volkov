@@ -114,4 +114,13 @@ def simplex_search(x, sigma_x2, M0, sigma0_2, alpha0, Ns,
 
     return simplex[0][0], simplex[0][1]
 
+x = generation_congurent_method(N, lambda1, lambda2, Z0)
+Mx = checkmate_waiting(x)
+sigma_x2 = dispersion(x, Mx)
+
+if abs(Mx) > 1e-6:
+    x = [xi - Mx for xi in x]
+    Mx = checkmate_waiting(x)
+    sigma_x2 = dispersion(x, Mx)
+
 
