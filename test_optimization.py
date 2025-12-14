@@ -1,6 +1,6 @@
 import numpy as np  # Импортируем библиотеку для численных вычислений и работы с массивами
 import matplotlib.pyplot as plt  # Импортируем библиотеку для построения графиков
-from math_litovka import hcho_objective, pozitive_hcho_objective  # Импортируем функции из модуля для математической модели
+from math_model_dynamics import hcho_objective, pozitive_hcho_objective  # Импортируем функции из модуля для математической модели
 
 # ---- ТЕСТОВАЯ ФУНКЦИЯ ----
 # f(x1, x2) = x1^2 + x2^2
