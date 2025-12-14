@@ -28,3 +28,14 @@ def checkmate_waiting(z):
 
 def dispersion(z, M):
     return sum((i - M) ** 2 for i in z) / len(z)
+
+def correlation_function(z, M, Smax):
+    N = len(z)
+    K = []
+    for S in range(Smax):
+        ssum = 0
+        for i in range(N - S):
+            ssum += (z[i] - M) * (z[i + S] - M)
+        K.append(ssum / (N - S))
+    return K
+
