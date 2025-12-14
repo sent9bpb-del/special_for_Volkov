@@ -73,3 +73,20 @@ def solve_model(V, T, m_c1_vh, d_t=0.01, eps=0.01, max_steps=200000):
         C3 += dC3dt * d_t
         C4 += dC4dt * d_t
         t += d_t
+
+        C1_array.append(C1)
+        C2_array.append(C2)
+        C3_array.append(C3)
+        C4_array.append(C4)
+
+        C1_per_array.append(per_C(C1, mu_ch3oh))
+        C2_per_array.append(per_C(C2, mu_hcho))
+        C3_per_array.append(per_C(C3, mu_o2))
+        C4_per_array.append(per_C(C4, mu_h2))
+        t_array.append(t)
+
+        if (abs(C1_per_array[-1] - C1_per_array[-2]) < eps and
+                abs(C2_per_array[-1] - C2_per_array[-2]) < eps and
+                abs(C3_per_array[-1] - C3_per_array[-2]) < eps and
+                abs(C4_per_array[-1] - C4_per_array[-2]) < eps):
+            break
