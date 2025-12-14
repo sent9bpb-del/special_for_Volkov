@@ -105,3 +105,19 @@ def solve_model(V, T, m_c1_vh, d_t=0.01, eps=0.01, max_steps=200000):
         "C2_out_percent": C2_per_array[-1],
         "t_final": t_array[-1]
     }
+
+if __name__ == "__main__":
+    V_optim = 5.0
+    T_optim = 950.0
+
+    C2_out_array = [0]
+    C1_in_array = []
+    t_out_array = [0]
+
+    for m in m_c1_vh:
+        res = solve_model(V_optim, T_optim, m)
+        C1_in_array.append(res["C1"][0])
+        C2_out_array.append(res["C2_out_mol"])
+        t_out_array.append(t_out_array[-1] + res["t_final"])
+
+    print(f"V = {V_optim} м³, T = {T_optim} K")
