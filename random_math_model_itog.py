@@ -21,3 +21,10 @@ mu_ch3oh = 0.032
 mu_o2 = 0.032
 mu_hcho = 0.030
 mu_h2 = 0.002
+
+def k(A, E, T):
+    return A * np.exp(-E / (R * T))
+
+
+def per_C(C_mol_per_m3, mu):
+    return (C_mol_per_m3 * 100 * mu) / ro
