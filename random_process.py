@@ -39,3 +39,20 @@ def correlation_function(z, M, Smax):
         K.append(ssum / (N - S))
     return K
 
+def approximate_alpha(S, K, sig_2, max_iter=1000):
+    alph = []
+    for i in range(len(S)):
+        alp = 1
+        kt = sig_2 * math.exp(-alp * abs(S[i]))
+        it = 0
+        while kt < abs(K[i]) and it < max_iter:
+            alp -= 0.1
+            kt = sig_2 * math.exp(-alp * abs(S[i]))
+            it += 1
+        alph.append(max(alp, 0.001))
+
+    alpha_final = sum(alph) / len(alph)
+    k_appr = [sig_2 * math.exp(-alpha_final * abs(S[i])) for i in range(len(S))]
+    return alpha_final, k_appr
+
+
