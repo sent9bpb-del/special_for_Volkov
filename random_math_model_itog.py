@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
-from lit6 import z
+from random_process import z
 
 # --- Константы и параметры модели ---
 
