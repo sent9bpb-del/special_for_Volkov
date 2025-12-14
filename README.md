@@ -19,3 +19,8 @@ run random_math_model_itog.py
 |---|---|
 | Python | 3.10+ (рекомендуется) |
 | Библиотеки | `numpy`, `matplotlib` |
+
+Установка зависимостей:
+```bash
+pip install numpy matplotlib
+```
