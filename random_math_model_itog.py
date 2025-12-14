@@ -121,3 +121,26 @@ if __name__ == "__main__":
         t_out_array.append(t_out_array[-1] + res["t_final"])
 
     print(f"V = {V_optim} м³, T = {T_optim} K")
+
+    plt.figure(figsize=(15, 5))
+
+    plt.subplot(3, 1, 1)
+    plt.plot(m_c1_vh)
+    plt.grid(True)
+    plt.xlabel("$t, c$")
+    plt.ylabel("m (CH3OH)вх")
+
+    plt.subplot(3, 1, 2)
+    plt.plot(C1_in_array)
+    plt.grid(True)
+    plt.xlabel("$t, c$")
+    plt.ylabel("C1 (CH3OH)вх")
+
+    plt.subplot(3, 1, 3)
+    plt.plot(C2_out_array)
+    plt.grid(True)
+    plt.xlabel("$t, c$")
+    plt.ylabel("C2 (HCHO)вых")
+
+    plt.tight_layout()
+    plt.show()
