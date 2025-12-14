@@ -12,7 +12,7 @@
 ## Быстрый старт
 
 ```bash
-run random_math_model_itog.py
+python random_math_model_itog.py
 ```
 ### Требования
 | Компонент | Версия / примечание |
@@ -40,7 +40,7 @@ pip install numpy matplotlib
 ### Шаг 1 — Проверить работоспособность матмодели
 
 ```bash
-run math_model_dynamics.py
+python math_model_dynamics.py
 ```
 
 Что получаем:
@@ -49,7 +49,7 @@ run math_model_dynamics.py
 ### Шаг 2 — Сгенерировать случайный процесс z(k)
 
 ```bash
-run random_procces.py
+python random_procces.py
 ```
 
 Что получаем:
@@ -60,7 +60,7 @@ run random_procces.py
 ### Шаг 3 — Найти оптимальные T и V
 
 ```bash
-run test_optimization.py
+python test_optimization.py
 ```
 
 Что делает:
@@ -71,7 +71,7 @@ run test_optimization.py
 ### Шаг 4 — Имитационное моделирование (случайный вход → выход)
 
 ```bash
-run random_math_model_itog.py
+python random_math_model_itog.py
 ```
 
 Что делает:
@@ -91,3 +91,7 @@ run random_math_model_itog.py
 | Оптимизация                | найденные `T*`, `V*`, траектория поиска              | `test_optimization.py`      |
 | Имитационное моделирование | `mвх(t)`, `C1вх(t)`, `C2вых(t)`                      | `random_math_model_itog.py` |
 
+Частые проблемы:
+1) ModuleNotFoundError / не импортируется z:
+- Запускай команды из корня репозитория (там, где лежат все .py).
+- Убедись, что файл называется ровно random_process.py и в нём реально создаётся переменная z.
