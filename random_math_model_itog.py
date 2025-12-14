@@ -28,3 +28,25 @@ def k(A, E, T):
 
 def per_C(C_mol_per_m3, mu):
     return (C_mol_per_m3 * 100 * mu) / ro
+
+def solve_model(V, T, m_c1_vh, d_t=0.01, eps=0.01, max_steps=200000):
+    m = m_c1_vh + m_vozd_vh
+
+    C1_vh = (m_c1_vh * ro) / (m * mu_ch3oh)
+    C3_vh = (m_vozd_vh * 0.22 * ro) / (m * mu_o2)
+    C2_vh = 0.0
+    C4_vh = 0.0
+
+    C1 = C1_vh
+    C2 = C2_vh
+    C3 = C3_vh
+    C4 = C4_vh
+    t = 0.0
+
+    v = m / ro
+    tau = V / v
+
+    k1 = k(A1, E1, T)
+    k2 = k(A2, E2, T)
+    k3 = k(A3, E3, T)
+    k4 = k(A4, E4, T)
