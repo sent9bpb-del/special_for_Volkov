@@ -136,4 +136,15 @@ if not (
 ):
     A1, A2 = simplex_search(x, sigma_x2, M0, sigma0_2, alpha0, Ns)
 
+plt.figure(figsize=(9, 8))
+plt.subplot(3, 1, 1)
+plt.plot(x)
+plt.subplot(3, 1, 2)
+plt.plot(z)
+plt.subplot(3, 1, 3)
+plt.plot(range(Kz_num), Kz)
+plt.plot(range(Kz_num), K_apr)
+
+plt.show()
+
 
