@@ -22,3 +22,7 @@ def generation_congurent_method(n, lam1, lam2, x0):
     for i in range(1, n):
         x.append((lam1 * x[i - 1]) % lam2)
     return [xi / lam2 - 0.5 for xi in x]
+
+def checkmate_waiting(z):
+    return sum(z) / len(z)
+
