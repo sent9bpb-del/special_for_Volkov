@@ -123,4 +123,17 @@ if abs(Mx) > 1e-6:
     Mx = checkmate_waiting(x)
     sigma_x2 = dispersion(x, Mx)
 
+z = generate_process_z(x, A1, A2, sigma0_2, sigma_x2, alpha0, M0, Ns)
+Mz = checkmate_waiting(z)
+sigma_z2 = dispersion(z, Mz)
+Kz = correlation_function(z, Mz, Kz_num)
+alpha_z, K_apr = approximate_alpha(range(Kz_num), Kz, sigma_z2)
+
+if not (
+    abs((Mz - M0) / M0) <= 0.1
+    and abs((sigma_z2 - sigma0_2) / sigma0_2) <= 0.1
+    and abs((alpha_z - alpha0) / alpha0) <= 0.1
+):
+    A1, A2 = simplex_search(x, sigma_x2, M0, sigma0_2, alpha0, Ns)
+
 
