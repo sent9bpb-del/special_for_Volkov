@@ -26,3 +26,5 @@ def generation_congurent_method(n, lam1, lam2, x0):
 def checkmate_waiting(z):
     return sum(z) / len(z)
 
+def dispersion(z, M):
+    return sum((i - M) ** 2 for i in z) / len(z)
