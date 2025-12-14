@@ -55,4 +55,18 @@ def approximate_alpha(S, K, sig_2, max_iter=1000):
     k_appr = [sig_2 * math.exp(-alpha_final * abs(S[i])) for i in range(len(S))]
     return alpha_final, k_appr
 
+def generate_process_z(x, A1, A2, sigma0_2, sigma_x0_2, alpha0, M0, Ns):
+    z = []
+    for k in range(len(x) - Ns):
+        ssum = 0
+        for i in range(k, k + Ns):
+            ssum += (
+                x[i]
+                * math.sqrt(sigma0_2 / (sigma_x0_2 * alpha0 * A2))
+                * A1
+                * math.exp(-A2 * alpha0 * abs(i - k))
+            )
+        z.append(ssum / Ns + M0)
+    return z
+
 
